@@ -8,11 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
     @IBOutlet private weak var firstTextField: UITextField!
     @IBOutlet private weak var secondTextField: UITextField!
 
@@ -23,18 +18,17 @@ class ViewController: UIViewController {
     @IBOutlet private weak var firstSwitch: UISwitch!
 
     @IBAction private func plusButton(_ sender: Any) {
-        let firstNumber: Int
-        let secondNumber: Int
-        let answerNumber: Int
-
         let firstValue = Int(firstTextField.text ?? "") ?? 0
         let secondValue = Int(secondTextField.text ?? "") ?? 0
 
+        let firstNumber: Int
         if firstSwitch.isOn {
             firstNumber = -firstValue
         } else {
             firstNumber = firstValue
         }
+
+        let secondNumber: Int
         if secondSwitch.isOn {
             secondNumber = -secondValue
         } else {
@@ -43,7 +37,7 @@ class ViewController: UIViewController {
 
         leftLabel.text = "\(firstNumber)"
         rightLabel.text = "\(secondNumber)"
-        answerNumber = firstNumber + secondNumber
+        let answerNumber = firstNumber + secondNumber
         resultLabel.text = "\(answerNumber)"
     }
 }
